@@ -29,7 +29,7 @@ const Watchlist = () => {
   return (
     <div>
       <button
-        className="btn btn-outline btn-primary btn-sm rounded-btn text-lg"
+        className="btn btn-outline btn-primary btn-sm rounded-btn text-lg mr-3"
         onClick={() => {
           setOpen(true);
           document.getElementById("modal").showModal();
@@ -41,7 +41,7 @@ const Watchlist = () => {
         <dialog id={`${open && "modal"}`} className="modal">
           <div className="modal-box card relative shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form method="dialog" className="absolute right-0 top-0">
-              <button className="btn font-extrabold text-xl text-slate-500">
+              <button className="btn font-extrabold text-xl text-slate-500 ">
                 X
               </button>
             </form>

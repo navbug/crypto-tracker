@@ -16,6 +16,8 @@ const CryptoContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [watchlist, setWatchlist] = useState([]);
 
+  const [pageChange, setPageChange] = useState(false);
+
   const fetchCoins = async () => {
     setLoading(true);
     const { data } = await axios.get(CoinList(currency));
@@ -39,7 +41,7 @@ const CryptoContext = ({ children }) => {
         unsubscribe();
       }
     }
-  }, [user]);
+  }, [user, pageChange]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -57,7 +59,7 @@ const CryptoContext = ({ children }) => {
     console.log(currency);
   }, [currency]);
 
-  return <Crypto.Provider value={{ currency, symbol, setCurrency, coins, loading, fetchCoins, user, watchlist }}>{children}</Crypto.Provider>;
+  return <Crypto.Provider value={{ currency, symbol, setCurrency, coins, loading, fetchCoins, user, watchlist, setWatchlist, pageChange, setPageChange }}>{children}</Crypto.Provider>;
 };
 
 export default CryptoContext;

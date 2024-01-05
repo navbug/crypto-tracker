@@ -5,7 +5,6 @@ import "./index.css";
 import { BrowserRouter } from 'react-router-dom'
 import CryptoContext from "./context/CryptoContext.jsx";
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <CryptoContext>

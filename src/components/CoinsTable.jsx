@@ -36,10 +36,6 @@ const CoinsTable = () => {
     }
   }
 
-  const removeCoinFromWatchlist = () => {
-
-  }
-
   const filteredCoins = () => {
     return coins.filter(
       (coin) =>
@@ -50,7 +46,7 @@ const CoinsTable = () => {
 
   return (
     <>
-      <div className="navbar bg-base-100 mt-10">
+      <div className="navbar bg-base-100 mt-6">
         <div className="flex-1 mb-2">
           <a className="font-bold text-2xl">Crypto prices</a>
         </div>
@@ -78,8 +74,8 @@ const CoinsTable = () => {
                 <th></th>
                 <th className="text-lg">Coin</th>
                 <th className="text-lg text-end">Price</th>
-                <th className="text-lg text-end">24h Change</th>
-                <th className="text-lg text-end">Market Cap</th>
+                <th className="text-lg text-end hidden md:table-cell">24h Change</th>
+                <th className="text-lg text-end hidden md:table-cell">Market Cap</th>
                 <th></th>
               </tr>
             </thead>
@@ -88,7 +84,10 @@ const CoinsTable = () => {
                 .slice(10 * page - 10, 10 * page)
                 .map((coin, index) => {
                   return (
-                    <tr onClick={() => navigate(`/coins/${coin.id}`)} key={coin.name} className="hover cursor-pointer">
+                    <tr onClick={() => {
+                      navigate(`/coins/${coin.id}`);
+                      window.location.reload();
+                    }} key={coin.name} className="hover cursor-pointer">
                       <th className="text-xl" onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -120,7 +119,7 @@ const CoinsTable = () => {
                         </span>
                       </td>
                       <td
-                        className={`text-md text-end ${
+                        className={`text-md text-end hidden md:table-cell ${
                           coin.price_change_percentage_24h < 0
                             ? "text-red-600"
                             : "text-green-600"
@@ -128,7 +127,7 @@ const CoinsTable = () => {
                       >
                         {`${coin.price_change_percentage_24h.toFixed(2)}%`}
                       </td>
-                      <td className="text-md text-end">{symbol}{numWithCommas((coin.market_cap/10000000).toFixed(0))}Cr</td>
+                      <td className="text-md text-end hidden md:table-cell">{symbol}{numWithCommas((coin.market_cap/10000000).toFixed(0))}Cr</td>
                     </tr>
                   );
                 })}

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { HistoricalChart } from "../config/api";
 import { CryptoState } from "../context/CryptoContext";
+import { numWithCommas } from "../pages/Home";
 import {
   Chart as ChartJS,
   LineElement,
@@ -56,8 +57,10 @@ const Chart = ({ id, coinData }) => {
     console.log(chartData);
   }, [days]);
 
+  console.log("chart");
+
   return (
-    <div className="w-full flex justify-center items-center">
+    <div className="w-[75vw] md:w-full flex justify-center items-center">
       {!chartData.length > 0 ? (
         <div className="flex justify-center items-center w-full h-80">
           <div className="loading text-3xl" />

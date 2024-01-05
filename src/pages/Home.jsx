@@ -1,8 +1,9 @@
 import React from 'react'
-import Carousel from '../components/Carousel'
 import CoinsTable from '../components/CoinsTable'
+import GeneralInfo from '../components/GeneralInfo';
 
 export function numWithCommas(number) {
+  number = number.toString();
   number = number.split(".");
   return number[0].replace(/(\d)(?=(\d\d)+\d$)/g, "$1,") + (number[1] ? ("."+number[1]): "");
 }
@@ -10,7 +11,7 @@ export function numWithCommas(number) {
 const Home = () => {
   return (
     <div>
-      <Carousel />
+      <GeneralInfo />
       <CoinsTable />
     </div>
   )
